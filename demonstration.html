@@ -1,0 +1,17 @@
+<script>
+  function jsonToFormData(json) {
+    const formData = new FormData();
+    formData.append('json', new Blob([JSON.stringify(json)], { type: 'application/json' }));
+    return formData;
+  }
+  const json = {
+    foo: 'bar',
+    baz: 123
+  };
+
+  const formData = jsonToFormData(json);
+  fetch('http://localhost:8080', {
+    method: 'POST',
+    body: formData
+  })
+</script>
